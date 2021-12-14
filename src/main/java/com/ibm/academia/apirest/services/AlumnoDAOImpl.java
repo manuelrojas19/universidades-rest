@@ -9,17 +9,14 @@ import com.ibm.academia.apirest.repositories.AlumnoRepository;
 import com.ibm.academia.apirest.repositories.PersonaRepository;
 
 @Service
-public class AlumnoDAOImpl extends PersonaDAOImpl implements AlumnoDAO 
-{
-	@Autowired
-	public AlumnoDAOImpl(@Qualifier("repositorioAlumnos")PersonaRepository repository) 
-	{
-		super(repository);
-	}
+public class AlumnoDAOImpl extends PersonaDAOImpl implements AlumnoDAO {
+    @Autowired
+    public AlumnoDAOImpl(@Qualifier("repositorioAlumnos") PersonaRepository repository) {
+        super(repository);
+    }
 
-	@Override
-	public Iterable<Persona> buscarAlumnoPorNombreCarrera(String nombre) 
-	{
-		return ((AlumnoRepository)repository).buscarAlumnoPorNombreCarrera(nombre);
-	}
+    @Override
+    public Iterable<Persona> buscarAlumnoPorNombreCarrera(String nombre) {
+        return ((AlumnoRepository) repository).buscarAlumnoPorNombreCarrera(nombre);
+    }
 }
