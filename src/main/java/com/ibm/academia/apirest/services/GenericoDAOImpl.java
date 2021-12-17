@@ -1,7 +1,9 @@
 package com.ibm.academia.apirest.services;
 
+import java.util.List;
 import java.util.Optional;
 
+import com.ibm.academia.apirest.exceptions.NotFoundException;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,9 +18,10 @@ public class GenericoDAOImpl <E, R extends CrudRepository<E, Integer>> implement
 
 	@Override
 	@Transactional(readOnly = true)
-	public Optional<E> buscarPorId(Integer id) 
+	public E buscarPorId(Integer id)
 	{
-		return repository.findById(id);
+		return repository.findById(id).orElseThrow(()
+				-> new NotFoundException("El recurso no fue encontrado"));
 	}
 
 	@Override
@@ -30,9 +33,12 @@ public class GenericoDAOImpl <E, R extends CrudRepository<E, Integer>> implement
 
 	@Override
 	@Transactional(readOnly = true)
-	public Iterable<E> buscarTodos() 
+	public List<E> buscarTodos()
 	{
-		return repository.findAll();
+		List<E> list = (List<E>) repository.findAll();
+		if (list.isEmpty())
+			throw new NotFoundException("El recurso no fue encontrado");
+		return list;
 	}
 
 	@Override

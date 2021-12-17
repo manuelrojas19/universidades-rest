@@ -93,6 +93,7 @@ public class Carrera implements Serializable
 	private void antesPersistir()
 	{
 		this.fechaAlta = new Date();
+		this.fechaModificacion = new Date();
 	}
 	
 	@PreUpdate
