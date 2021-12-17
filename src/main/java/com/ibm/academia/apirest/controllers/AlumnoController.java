@@ -32,7 +32,7 @@ public class AlumnoController {
     public ResponseEntity<List<Persona>> findAll() {
         List<Persona> alumnos = alumnoDao.buscarTodos();
         if (alumnos.isEmpty()) {
-            throw new NotFoundException("No se encontraron profesores");
+            throw new NotFoundException("No se encontraron alumnos");
         }
         return new ResponseEntity<>(alumnos, HttpStatus.OK);
     }
@@ -48,7 +48,7 @@ public class AlumnoController {
     @GetMapping("/{dni}")
     public ResponseEntity<Persona> findByDni(@PathVariable String dni) {
         Persona alumno = alumnoDao.buscarPorDni(dni)
-                .orElseThrow(() -> new NotFoundException("No se encontro al profesor"));
+                .orElseThrow(() -> new NotFoundException("No se encontro al alumno"));
         return new ResponseEntity<>(alumno, HttpStatus.OK);
     }
 

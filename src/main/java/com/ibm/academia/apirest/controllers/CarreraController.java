@@ -28,13 +28,13 @@ public class CarreraController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<CarreraDto> findAll(@PathVariable Integer id) {
+    public ResponseEntity<CarreraDto> findById(@PathVariable Integer id) {
         Carrera carrera = carreraDAO.buscarPorId(id);
         CarreraDto response = CarreraMapper.CarreraToCarreraDto(carrera);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @GetMapping
+    @GetMapping("/findByProfesorNombreYApellido")
     public ResponseEntity<List<CarreraDto>> findCarrerasByProfesorNombreYApellido(@RequestParam String nombre,
                                                                                   @RequestParam String apellido) {
         List<CarreraDto> carreras = ((List<Carrera>) carreraDAO

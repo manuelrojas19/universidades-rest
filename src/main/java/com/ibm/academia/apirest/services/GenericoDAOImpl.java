@@ -18,8 +18,7 @@ public class GenericoDAOImpl <E, R extends CrudRepository<E, Integer>> implement
 
 	@Override
 	@Transactional(readOnly = true)
-	public E buscarPorId(Integer id)
-	{
+	public E buscarPorId(Integer id) {
 		return repository.findById(id).orElseThrow(()
 				-> new NotFoundException("El recurso no fue encontrado"));
 	}
@@ -33,8 +32,7 @@ public class GenericoDAOImpl <E, R extends CrudRepository<E, Integer>> implement
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<E> buscarTodos()
-	{
+	public List<E> buscarTodos() {
 		List<E> list = (List<E>) repository.findAll();
 		if (list.isEmpty())
 			throw new NotFoundException("El recurso no fue encontrado");
