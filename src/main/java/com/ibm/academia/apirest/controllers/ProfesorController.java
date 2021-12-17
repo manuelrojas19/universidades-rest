@@ -19,9 +19,9 @@ public class ProfesorController {
 
     /**
      /**
-     * EndPoint que retorna una lista de todos los alumnos registrados
+     * EndPoint que retorna una lista de todos los profesores registrados
      *
-     * @return response entity con la lista de todos los alumnos registrados
+     * @return response entity con la lista de todos los profesores registrados
      * @author Manuel Rojas 12-16-2021
      */
     @GetMapping
@@ -35,10 +35,10 @@ public class ProfesorController {
 
     /**
      /**
-     * EndPoint que retorna un alumno según el dni
+     * EndPoint que retorna un profesor según el dni
      *
-     * @param dni Número de identificación del alumno
-     * @return response entity con el alumno encontrado
+     * @param dni Número de identificación del profesor
+     * @return response entity con el profesor encontrado
      * @author Manuel Rojas 12-16-2021
      */
     @GetMapping("/{dni}")
