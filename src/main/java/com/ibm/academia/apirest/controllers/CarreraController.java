@@ -20,9 +20,14 @@ public class CarreraController {
     @Autowired
     private CarreraDAO carreraDAO;
 
+    /**
+     * Endpoint para recuperar una lista de todas las carreras registradas en la base de datos
+     *
+     * @return lista de las carreras registradas
+     */
     @GetMapping
     public ResponseEntity<List<CarreraDto>> findAll() {
-        List<CarreraDto> carreras = carreraDAO.buscarTodos()
+        List<CarreraDto> carreras = ((List<Carrera>) carreraDAO.buscarTodos())
                 .stream().map(CarreraMapper::CarreraToCarreraDto).collect(Collectors.toList());
         return new ResponseEntity<>(carreras, HttpStatus.OK);
     }

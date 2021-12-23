@@ -4,9 +4,11 @@ import java.util.List;
 import java.util.Optional;
 
 import com.ibm.academia.apirest.exceptions.NotFoundException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.transaction.annotation.Transactional;
 
+@Slf4j
 public class GenericoDAOImpl <E, R extends CrudRepository<E, Integer>> implements GenericoDAO<E>
 {
 	protected final R repository;
@@ -30,13 +32,11 @@ public class GenericoDAOImpl <E, R extends CrudRepository<E, Integer>> implement
 		return repository.save(entidad);
 	}
 
+
 	@Override
 	@Transactional(readOnly = true)
-	public List<E> buscarTodos() {
-		List<E> list = (List<E>) repository.findAll();
-		if (list.isEmpty())
-			throw new NotFoundException("El recurso no fue encontrado");
-		return list;
+	public Iterable<E> buscarTodos() {
+		return repository.findAll();
 	}
 
 	@Override
