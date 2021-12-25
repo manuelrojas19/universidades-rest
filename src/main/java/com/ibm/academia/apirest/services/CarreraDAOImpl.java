@@ -8,7 +8,7 @@ import com.ibm.academia.apirest.entities.Carrera;
 import com.ibm.academia.apirest.repositories.CarreraRepository;
 
 @Service
-public class CarreraDAOImpl extends GenericoDAOImpl<Carrera, CarreraRepository> implements CarreraDAO 
+public class CarreraDAOImpl extends GenericDAOImpl<Carrera, CarreraRepository> implements CarreraDAO
 {
 	@Autowired
 	public CarreraDAOImpl(CarreraRepository repository) 

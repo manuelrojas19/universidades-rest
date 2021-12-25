@@ -7,5 +7,6 @@ import java.util.List;
 public interface AlumnoDAO extends PersonaDAO
 {
 	public List<Persona> buscarAlumnoPorNombreCarrera(String nombre);
+	public Persona guardar(Integer idCarrera, Persona persona);
 	public Persona actualizarAlumno(Integer id, Persona persona);
 }

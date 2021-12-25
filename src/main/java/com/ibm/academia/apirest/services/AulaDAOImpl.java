@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class AulaDAOImpl  extends GenericoDAOImpl<Aula, AulaRepository> implements AulaDAO {
+public class AulaDAOImpl  extends GenericDAOImpl<Aula, AulaRepository> implements AulaDAO {
 
     @Autowired
     public AulaDAOImpl(AulaRepository repository) {

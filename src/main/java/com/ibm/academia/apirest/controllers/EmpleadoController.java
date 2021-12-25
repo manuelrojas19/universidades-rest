@@ -24,7 +24,7 @@ public class EmpleadoController {
 
     @GetMapping
     public ResponseEntity<List<Persona>> findAll() {
-        List<Persona> personas = (List<Persona>) empleadoDao.buscarTodos();
+        List<Persona> personas = empleadoDao.buscarTodos();
         return new ResponseEntity<>(personas, HttpStatus.OK);
     }
 
@@ -37,8 +37,7 @@ public class EmpleadoController {
      */
     @GetMapping("/{dni}")
     public ResponseEntity<Persona> findByDni(@PathVariable String dni) {
-        Persona alumno = empleadoDao.buscarPorDni(dni)
-                .orElseThrow(() -> new NotFoundException("No se encontró al empleado"));
+        Persona alumno = empleadoDao.buscarPorDni(dni);
         return new ResponseEntity<>(alumno, HttpStatus.OK);
     }
 

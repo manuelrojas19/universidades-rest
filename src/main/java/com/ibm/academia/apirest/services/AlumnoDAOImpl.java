@@ -14,6 +14,8 @@ import java.util.List;
 
 @Service("alumnoDao")
 public class AlumnoDAOImpl extends PersonaDAOImpl implements AlumnoDAO {
+    @Autowired
+    private CarreraDAO carreraDAO;
 
     @Autowired
     public AlumnoDAOImpl(@Qualifier("repositorioAlumnos") PersonaRepository repository) {
@@ -22,12 +24,18 @@ public class AlumnoDAOImpl extends PersonaDAOImpl implements AlumnoDAO {
 
     @Override
     public List<Persona> buscarAlumnoPorNombreCarrera(String nombre) {
-
         List<Persona> personas = (List<Persona>) ((AlumnoRepository) repository).buscarAlumnoPorNombreCarrera(nombre);
         if (personas.isEmpty()) {
             throw new NotFoundException("No se encontraron alumnos");
         }
         return personas;
+    }
+
+    @Override
+    public Persona guardar(Integer idCarrera, Persona persona) {
+        Alumno alumno = (Alumno) persona;
+        alumno.setCarrera(carreraDAO.buscarPorId(idCarrera));
+        return repository.save(alumno);
     }
 
     @Override

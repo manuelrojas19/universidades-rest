@@ -13,11 +13,14 @@ import java.util.List;
 
 @Service("empleadoDao")
 public class EmpleadoDAOImpl extends PersonaDAOImpl implements EmpleadoDAO {
+    private final PersonaRepository personaRepository;
+
     private static final String NOT_FOUND_ERROR_MSG = "No se han encontrado empleados";
 
     @Autowired
     public EmpleadoDAOImpl(@Qualifier("empleadoRepository") PersonaRepository repository) {
         super(repository);
+        personaRepository = repository;
     }
 
     @Override

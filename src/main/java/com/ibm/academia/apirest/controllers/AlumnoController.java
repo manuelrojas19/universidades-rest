@@ -2,7 +2,6 @@ package com.ibm.academia.apirest.controllers;
 
 import com.ibm.academia.apirest.entities.Alumno;
 import com.ibm.academia.apirest.entities.Persona;
-import com.ibm.academia.apirest.exceptions.NotFoundException;
 import com.ibm.academia.apirest.services.AlumnoDAO;
 import com.ibm.academia.apirest.services.PersonaDAO;
 import lombok.extern.slf4j.Slf4j;
@@ -14,19 +13,18 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Objects;
 
 
 @Slf4j
 @RestController
 @RequestMapping("/api/v1/alumnos")
 public class AlumnoController {
-
     @Autowired
     @Qualifier("alumnoDao")
     private PersonaDAO alumnoDao;
 
     /**
-     * /**
      * EndPoint que retorna una lista de todos los alumnos registrados
      *
      * @return response entity con la lista de todos los alumnos registrados
@@ -34,11 +32,21 @@ public class AlumnoController {
      */
     @GetMapping
     public ResponseEntity<List<Persona>> findAll() {
-        List<Persona> alumnos = ((List<Persona>) alumnoDao.buscarTodos());
-        if (alumnos.isEmpty()) {
-            throw new NotFoundException("No se encontraron alumnos");
-        }
+        List<Persona> alumnos = alumnoDao.buscarTodos();
         return new ResponseEntity<>(alumnos, HttpStatus.OK);
+    }
+
+    /**
+     * EndPoint que retorna un alumno según el dni
+     *
+     * @param id id del alumno
+     * @return response entity con el alumno encontrado
+     * @author Manuel Rojas 12-16-2021
+     */
+    @GetMapping("/{id}")
+    public ResponseEntity<Persona> findById(@PathVariable Integer id) {
+        Persona alumno = alumnoDao.buscarPorId(id);
+        return new ResponseEntity<>(alumno, HttpStatus.OK);
     }
 
     /**
@@ -48,10 +56,9 @@ public class AlumnoController {
      * @return response entity con el alumno encontrado
      * @author Manuel Rojas 12-16-2021
      */
-    @GetMapping("/{dni}")
-    public ResponseEntity<Persona> findByDni(@PathVariable String dni) {
-        Persona alumno = alumnoDao.buscarPorDni(dni)
-                .orElseThrow(() -> new NotFoundException("No se encontró al alumno"));
+    @GetMapping("/findByDni")
+    public ResponseEntity<Persona> findByDni(@RequestParam String dni) {
+        Persona alumno = alumnoDao.buscarPorDni(dni);
         return new ResponseEntity<>(alumno, HttpStatus.OK);
     }
 
@@ -59,26 +66,33 @@ public class AlumnoController {
     /**
      * EndPoint para registrar un alumno.
      *
-     * @param alumno objeto con los datos del alumno a registrar.
-     * @return response entity con el alumno registrado.
+     * @param alumno    objeto con los datos del alumno a registrar.
+     * @param idCarrera request param con la carrera a la que se asociara el alumno, si esta no se encuentra en la
+     *                  petición el alumno será registrado sin asociarse a una carrera.
+     * @return response entity con los datos del alumno registrado.
      * @author Manuel Rojas 12-16-2021
      */
     @PostMapping
-    public ResponseEntity<Persona> saveAlumno(@Valid @RequestBody Alumno alumno) {
-        Persona response = alumnoDao.guardar(alumno);
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
+    public ResponseEntity<Persona> save(@Valid @RequestBody Alumno alumno,
+                                              @RequestParam(required = false) Integer idCarrera) {
+        Persona personaSaved;
+        if (Objects.nonNull(idCarrera))
+            personaSaved = ((AlumnoDAO) alumnoDao).guardar(idCarrera, alumno);
+        else
+            personaSaved = alumnoDao.guardar(alumno);
+        return new ResponseEntity<>(personaSaved, HttpStatus.CREATED);
     }
 
     /**
-     * EndPoint para actulizar los datos de un alumno.
+     * EndPoint para actualizar los datos de un alumno.
      *
      * @param alumno objeto con los datos del alumno a registrar.
-     * @param id    Número de identificación del alumno
+     * @param id     Número de identificación del alumno
      * @return response entity con el alumno registrado.
      * @author Manuel Rojas 12-16-2021
      */
     @PutMapping("{/id}")
-    public ResponseEntity<Persona> upateAlumno(@PathVariable Integer id, @Valid @RequestBody Alumno alumno) {
+    public ResponseEntity<Persona> upate(@PathVariable Integer id, @Valid @RequestBody Alumno alumno) {
         Persona response = ((AlumnoDAO) alumnoDao).actualizarAlumno(id, alumno);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
@@ -87,13 +101,13 @@ public class AlumnoController {
      * EndPoint para eliminar un alumno.
      *
      * @param id id del alumno a eliminar
-     * @return response entity con el alumno registrado.
+     * @return response entity con el status del alumno
      * @author Manuel Rojas 12-16-2021
      */
     @DeleteMapping("{/id}")
-    public ResponseEntity<?> deleteAlumno(@PathVariable Integer id) {
+    public ResponseEntity<?> delete(@PathVariable Integer id) {
         alumnoDao.eliminarPorId(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 }
