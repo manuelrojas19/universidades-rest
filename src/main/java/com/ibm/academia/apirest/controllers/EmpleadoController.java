@@ -1,6 +1,6 @@
 package com.ibm.academia.apirest.controllers;
 
-import com.ibm.academia.apirest.entities.Alumno;
+import com.ibm.academia.apirest.entities.Empleado;
 import com.ibm.academia.apirest.entities.Persona;
 import com.ibm.academia.apirest.enums.TipoEmpleado;
 import com.ibm.academia.apirest.services.EmpleadoDAO;
@@ -70,32 +70,39 @@ public class EmpleadoController {
     /**
      * EndPoint para registrar un empleado.
      *
-     * @param alumno objeto con los datos del empleado a registrar.
+     * @param empleado objeto con los datos del empleado a registrar.
      * @return response entity con el empleado registrado.
      * @author Manuel Rojas 12-16-2021
      */
     @PostMapping
-    public ResponseEntity<Persona> saveEmpleado(@Valid @RequestBody Alumno alumno) {
-        Persona response = empleadoDao.guardar(alumno);
+    public ResponseEntity<Persona> save(@Valid @RequestBody Empleado empleado) {
+        Persona response = empleadoDao.guardar(empleado);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
 
-//    @PutMapping("{/id}")
-//    public ResponseEntity<Persona> upateAlumno(@PathVariable Integer id, @Valid @RequestBody Alumno alumno) {
-//        Persona response = ((AlumnoDAO) empleadoDao).actualizarAlumno(id, alumno);
-//        return new ResponseEntity<>(response, HttpStatus.OK);
-//    }
+    /**
+     * EndPoint para editar un empleado.
+     *
+     * @param empleado objeto con los datos del empleado a registrar.
+     * @return response entity con el empleado registrado.
+     * @author Manuel Rojas 12-16-2021
+     */
+    @PutMapping("{/id}")
+    public ResponseEntity<Persona> update(@PathVariable Integer id, @Valid @RequestBody Empleado empleado) {
+        Persona response = ((EmpleadoDAO) empleadoDao).actualizar(id, empleado);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 
     /**
-     * EndPoint para eliminar un alumno.
+     * EndPoint para eliminar un empleado.
      *
      * @param id id del empleado a eliminar
      * @return response entity con el status de la solicitud
      * @author Manuel Rojas 12-16-2021
      */
     @DeleteMapping("{/id}")
-    public ResponseEntity<?> deleteEmpleado(@PathVariable Integer id) {
+    public ResponseEntity<?> delete(@PathVariable Integer id) {
         empleadoDao.eliminarPorId(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

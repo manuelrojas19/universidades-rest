@@ -32,4 +32,16 @@ public class AulaDAOImpl  extends GenericDAOImpl<Aula, AulaRepository> implement
         return repository.findAulaByNumeroAula(numAula).orElseThrow(() ->
                 new NotFoundException("No se encontró el aula"));
     }
+
+    @Override
+    public Aula actualizar(Integer id, Aula aula) {
+        Aula aulaToUpdate = this.buscarPorId(id);
+
+        aulaToUpdate.setNumeroAula(aula.getNumeroAula());
+        aulaToUpdate.setCantidadPupitres(aula.getCantidadPupitres());
+        aulaToUpdate.setMedidas(aula.getMedidas());
+        aulaToUpdate.setPizarron(aula.getPizarron());
+
+        return repository.save(aula);
+    }
 }

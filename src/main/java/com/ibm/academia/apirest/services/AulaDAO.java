@@ -9,5 +9,6 @@ public interface AulaDAO extends GenericDAO<Aula> {
     List<Aula> findByPizarron(Pizarron pizarron);
     List<Aula> findByNombrePabellon(String pabellon);
     Aula findByNumeroAula(Integer numAula);
+    Aula actualizar(Integer id, Aula aula);
 
 }

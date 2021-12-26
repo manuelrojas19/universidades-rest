@@ -96,10 +96,19 @@ public class AulaController {
         return new ResponseEntity<>(aulaSaved, HttpStatus.CREATED);
     }
 
-//    @PutMapping("/{id}")
-//    public ResponseEntity<Aula> update(@PathVariable Integer id, @Valid @RequestBody Aula aula) {
-//        Aula aulaUpdated = ((AulaDAO) aulaDAO)
-//    }
+    /**
+     * EndPoint para actualizar los datos de un aula.
+     *
+     * @param aula objeto con los datos del aula a actualizar.
+     * @param id     Número de identificación del aula
+     * @return response entity con el aula actualizada.
+     * @author Manuel Rojas 12-16-2021
+     */
+    @PutMapping("/{id}")
+    public ResponseEntity<Aula> update(@PathVariable Integer id, @Valid @RequestBody Aula aula) {
+        Aula aulaUpdated = aulaDAO.actualizar(id, aula);
+        return new ResponseEntity<>(aulaUpdated, HttpStatus.CREATED);
+    }
 
     /**
      * EndPoint para eliminar un Aula.

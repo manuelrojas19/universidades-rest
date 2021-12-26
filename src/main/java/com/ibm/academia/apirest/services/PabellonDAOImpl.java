@@ -35,4 +35,12 @@ public class PabellonDAOImpl extends GenericDAOImpl<Pabellon, PabellonRepository
             throw new NotFoundException(NOT_FOUND_ERROR_MSG);
         return pabellones;
     }
+
+    @Override
+    public Pabellon actualizar(Integer id, Pabellon pabellon) {
+        Pabellon pabellonToUpdate = this.buscarPorId(id);
+        pabellonToUpdate.setNombre(pabellon.getNombre());
+        pabellonToUpdate.setMetrosCuadrados(pabellon.getMetrosCuadrados());
+        return repository.save(pabellonToUpdate);
+    }
 }

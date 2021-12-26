@@ -1,6 +1,7 @@
 package com.ibm.academia.apirest.controllers;
 
 import com.ibm.academia.apirest.entities.Persona;
+import com.ibm.academia.apirest.entities.Profesor;
 import com.ibm.academia.apirest.services.PersonaDAO;
 import com.ibm.academia.apirest.services.ProfesorDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,28 +74,40 @@ public class ProfesorController {
     }
 
     /**
-     * EndPoint para registrar un alumno.
+     * EndPoint para registrar un profesor.
      *
-     * @param profesor objeto con los datos del alumno a registrar.
-     * @return response entity con el alumno registrado.
+     * @param profesor objeto con los datos del profesor a registrar.
+     * @return response entity con el profesor registrado.
      * @author Manuel Rojas 12-16-2021
      */
     @PostMapping("/profesores")
-    public ResponseEntity<Persona> saveProfesor(@Valid @RequestBody Persona profesor) {
+    public ResponseEntity<Persona> save(@Valid @RequestBody Profesor profesor) {
         Persona response = profesorDao.guardar(profesor);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
+    /**
+     * EndPoint para editar los datos de un profesor.
+     *
+     * @param profesor objeto con los datos del profesor a actualizar.
+     * @return response entity con el profesor actualizado.
+     * @author Manuel Rojas 12-16-2021
+     */
+    @PutMapping("/profesores/{id}")
+    public ResponseEntity<Persona> update(@PathVariable Integer id, @Valid @RequestBody Profesor profesor) {
+        Persona response = ((ProfesorDAO) profesorDao).actualizar(id, profesor);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
+    }
 
     /**
-     * EndPoint para eliminar un alumno.
+     * EndPoint para eliminar un profesor.
      *
-     * @param id id del alumno a eliminar
-     * @return response entity con el alumno registrado.
+     * @param id id del profesor a eliminar
+     * @return response entity con el profesor registrado.
      * @author Manuel Rojas 12-16-2021
      */
     @DeleteMapping("{/profesores/{id}")
-    public ResponseEntity<?> deleteProfesor(@PathVariable Integer id) {
+    public ResponseEntity<?> delete(@PathVariable Integer id) {
         profesorDao.eliminarPorId(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }

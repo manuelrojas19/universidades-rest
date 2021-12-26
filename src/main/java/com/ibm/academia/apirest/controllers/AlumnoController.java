@@ -99,9 +99,9 @@ public class AlumnoController {
     /**
      * EndPoint para actualizar los datos de un alumno.
      *
-     * @param alumno objeto con los datos del alumno a registrar.
+     * @param alumno objeto con los datos del alumno a actualizar.
      * @param id     Número de identificación del alumno
-     * @return response entity con el alumno registrado.
+     * @return response entity con el alumno actualizado.
      * @author Manuel Rojas 12-16-2021
      */
     @PutMapping("/{id}")

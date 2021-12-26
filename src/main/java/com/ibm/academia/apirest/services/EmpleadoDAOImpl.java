@@ -1,5 +1,6 @@
 package com.ibm.academia.apirest.services;
 
+import com.ibm.academia.apirest.entities.Empleado;
 import com.ibm.academia.apirest.entities.Persona;
 import com.ibm.academia.apirest.enums.TipoEmpleado;
 import com.ibm.academia.apirest.exceptions.NotFoundException;
@@ -13,14 +14,12 @@ import java.util.List;
 
 @Service("empleadoDao")
 public class EmpleadoDAOImpl extends PersonaDAOImpl implements EmpleadoDAO {
-    private final PersonaRepository personaRepository;
 
     private static final String NOT_FOUND_ERROR_MSG = "No se han encontrado empleados";
 
     @Autowired
     public EmpleadoDAOImpl(@Qualifier("empleadoRepository") PersonaRepository repository) {
         super(repository);
-        personaRepository = repository;
     }
 
     @Override
@@ -30,5 +29,15 @@ public class EmpleadoDAOImpl extends PersonaDAOImpl implements EmpleadoDAO {
         if (empleados.isEmpty())
             throw new NotFoundException(NOT_FOUND_ERROR_MSG);
         return empleados;
+    }
+
+    @Override
+    public Empleado actualizar(Integer id, Empleado empleado) {
+        Empleado empleadoToUpdate = (Empleado) this.buscarPorId(id);
+        empleadoToUpdate.setTipoEmpleado(empleado.getTipoEmpleado());
+        empleadoToUpdate.setSueldo(empleado.getSueldo());
+        empleadoToUpdate.setNombre(empleado.getNombre());
+        empleadoToUpdate.setApellido(empleado.getApellido());
+        return repository.save(empleadoToUpdate);
     }
 }

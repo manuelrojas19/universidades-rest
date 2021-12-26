@@ -85,9 +85,22 @@ public class PabellonController {
     }
 
     /**
+     * EndPoint para editar un pabellón.
+     *
+     * @param pabellon objeto con los datos del pabellon a actualizar.
+     * @return response entity con el pabellon registrado.
+     * @author Manuel Rojas 12-16-2021
+     */
+    @PutMapping("{/id}")
+    public ResponseEntity<Pabellon> update(@PathVariable Integer id, @Valid @RequestBody Pabellon pabellon) {
+        Pabellon response = pabellonDAO.actualizar(id, pabellon);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    /**
      * EndPoint para eliminar un pabellón
      *
-     * @param id     Número de identificación del pabellón
+     * @param id Número de identificación del pabellón
      * @return response entity con el status de la solicitud.
      * @author Manuel Rojas 12-16-2021
      */
