@@ -19,6 +19,7 @@ import java.util.Objects;
 @RestController
 @RequestMapping("/api/v1/alumnos")
 public class AlumnoController {
+
     @Autowired
     @Qualifier("alumnoDao")
     private PersonaDAO alumnoDao;
@@ -36,7 +37,7 @@ public class AlumnoController {
     }
 
     /**
-     * EndPoint que retorna un alumno según el dni
+     * EndPoint que retorna un alumno según su id
      *
      * @param id id del alumno
      * @return response entity con el alumno encontrado
@@ -49,7 +50,7 @@ public class AlumnoController {
     }
 
     /**
-     * EndPoint que retorna un alumno según el dni
+     * EndPoint que retorna un alumno según su dni
      *
      * @param dni Número de identificación del alumno
      * @return response entity con el alumno encontrado
@@ -61,6 +62,13 @@ public class AlumnoController {
         return new ResponseEntity<>(alumno, HttpStatus.OK);
     }
 
+    /**
+     * Endpoint que retorna una lista de alumnos asociados a una carrera según su nombre
+     *
+     * @param nombreCarrera String con el nombre de la carrera
+     * @return Lista de carreras
+     * @author Manuel Rojas 12-16-2021
+     */
     @GetMapping("/findByNombreCarrera")
     public ResponseEntity<List<Persona>> findByNombreCarrera(@RequestParam String nombreCarrera) {
         List<Persona> alumnos = ((AlumnoDAO) alumnoDao).buscarPorNombreCarrera(nombreCarrera);

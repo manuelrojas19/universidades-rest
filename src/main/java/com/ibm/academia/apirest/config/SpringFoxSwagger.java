@@ -20,11 +20,10 @@ public class SpringFoxSwagger {
     public Docket getDocket() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.ibm.academia.apirest.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.ibm.academia.apirest.controllers"))
                 .paths(PathSelectors.any())
                 .build().apiInfo(apiInfo());
     }
-
     
     private ApiInfo apiInfo() {
         return new ApiInfo(

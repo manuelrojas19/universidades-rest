@@ -11,6 +11,7 @@ import java.util.Optional;
 public interface AlumnoRepository extends PersonaRepository {
     @Query("select a from Alumno a")
     Iterable<Persona> findAll();
+
     @Query("select a from Alumno a where a.id = ?1")
     Optional<Persona> findById(Integer id);
     //@Query("select a from Alumno a where a.carrera.nombre = ?1")

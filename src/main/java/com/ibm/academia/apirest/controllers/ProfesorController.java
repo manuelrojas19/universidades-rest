@@ -33,6 +33,19 @@ public class ProfesorController {
         return new ResponseEntity<>(profesores, HttpStatus.OK);
     }
 
+    /**
+     * EndPoint que retorna un profesor según el id
+     *
+     * @param id Integer con el id del profesor
+     * @return response entity con el profesor encontrado
+     * @author Manuel Rojas 12-16-2021
+     */
+    @GetMapping("/profesores/{id}")
+    public ResponseEntity<Persona> findByDni(@PathVariable Integer id) {
+        Persona alumno = profesorDao.buscarPorId(id);
+        return new ResponseEntity<>(alumno, HttpStatus.OK);
+    }
+
 
     /**
      * EndPoint que retorna un profesor según el dni
@@ -41,8 +54,8 @@ public class ProfesorController {
      * @return response entity con el profesor encontrado
      * @author Manuel Rojas 12-16-2021
      */
-    @GetMapping("/{dni}")
-    public ResponseEntity<Persona> findByDni(@PathVariable String dni) {
+    @GetMapping("/profesores/findByDni")
+    public ResponseEntity<Persona> findByDni(@RequestParam String dni) {
         Persona alumno = profesorDao.buscarPorDni(dni);
         return new ResponseEntity<>(alumno, HttpStatus.OK);
     }

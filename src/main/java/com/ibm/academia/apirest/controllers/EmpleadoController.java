@@ -17,16 +17,31 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/empleados")
 public class EmpleadoController {
+
     @Autowired
     @Qualifier("empleadoDao")
     private PersonaDAO empleadoDao;
 
+
+    /**
+     * EndPoint para recuperar todos los empleados registrados en la bd
+     *
+     * @return response entity con la lista de todos los empleados registrados
+     * @author Manuel Rojas 12-16-2021
+     */
     @GetMapping
     public ResponseEntity<List<Persona>> findAll() {
-        List<Persona> personas = empleadoDao.buscarTodos();
-        return new ResponseEntity<>(personas, HttpStatus.OK);
+        List<Persona> empleados = empleadoDao.buscarTodos();
+        return new ResponseEntity<>(empleados, HttpStatus.OK);
     }
 
+    /**
+     * EndPoint para recuperar a un empleado según su id
+     *
+     * @param id Integer con el id del empleado a recuperar.
+     * @return response entity con el empleado encontrado
+     * @author Manuel Rojas 12-16-2021
+     */
     @GetMapping("/{id}")
     public ResponseEntity<Persona> findById(@PathVariable Integer id) {
         Persona empleado = empleadoDao.buscarPorId(id);
@@ -65,14 +80,7 @@ public class EmpleadoController {
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-    /**
-     * EndPoint para actulizar los datos de un alumno.
-     *
-     * @param alumno objeto con los datos del alumno a registrar.
-     * @param id    Número de identificación del alumno
-     * @return response entity con el alumno registrado.
-     * @author Manuel Rojas 12-16-2021
-     */
+
 //    @PutMapping("{/id}")
 //    public ResponseEntity<Persona> upateAlumno(@PathVariable Integer id, @Valid @RequestBody Alumno alumno) {
 //        Persona response = ((AlumnoDAO) empleadoDao).actualizarAlumno(id, alumno);
