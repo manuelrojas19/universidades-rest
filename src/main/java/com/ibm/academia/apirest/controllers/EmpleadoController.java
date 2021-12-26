@@ -27,6 +27,12 @@ public class EmpleadoController {
         return new ResponseEntity<>(personas, HttpStatus.OK);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Persona> findById(@PathVariable Integer id) {
+        Persona empleado = empleadoDao.buscarPorId(id);
+        return new ResponseEntity<>(empleado, HttpStatus.OK);
+    }
+
     /**
      * EndPoint que retorna un empleado según el dni
      *
@@ -34,16 +40,15 @@ public class EmpleadoController {
      * @return response entity con el empleado encontrado
      * @author Manuel Rojas 12-16-2021
      */
-    @GetMapping("/{dni}")
-    public ResponseEntity<Persona> findByDni(@PathVariable String dni) {
-        Persona emplado = empleadoDao.buscarPorDni(dni);
-        return new ResponseEntity<>(emplado, HttpStatus.OK);
+    @GetMapping("/findByDni")
+    public ResponseEntity<Persona> findByDni(@RequestParam String dni) {
+        Persona empleado = empleadoDao.buscarPorDni(dni);
+        return new ResponseEntity<>(empleado, HttpStatus.OK);
     }
 
     @GetMapping("/findByTipoEmpleado")
     public ResponseEntity<List<Persona>> findByTipoEmpleado(@RequestParam TipoEmpleado tipoEmpleado) {
-        List<Persona> empleados = (List<Persona>) ((EmpleadoDAO) empleadoDao)
-                .findEmpleadoByTipoEmpleado(tipoEmpleado);
+        List<Persona> empleados = ((EmpleadoDAO) empleadoDao).findByTipoEmpleado(tipoEmpleado);
         return new ResponseEntity<>(empleados, HttpStatus.OK);
     }
 

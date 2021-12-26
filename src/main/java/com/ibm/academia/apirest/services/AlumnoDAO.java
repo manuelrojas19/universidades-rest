@@ -4,9 +4,8 @@ import com.ibm.academia.apirest.entities.Persona;
 
 import java.util.List;
 
-public interface AlumnoDAO extends PersonaDAO
-{
-	public List<Persona> buscarAlumnoPorNombreCarrera(String nombre);
-	public Persona guardar(Integer idCarrera, Persona persona);
-	public Persona actualizarAlumno(Integer id, Persona persona);
+public interface AlumnoDAO extends PersonaDAO {
+    List<Persona> buscarPorNombreCarrera(String nombre);
+    Persona guardar(Integer idCarrera, Persona persona);
+    Persona actualizar(Integer id, Persona persona);
 }

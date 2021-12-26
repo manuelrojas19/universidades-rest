@@ -61,6 +61,11 @@ public class AlumnoController {
         return new ResponseEntity<>(alumno, HttpStatus.OK);
     }
 
+    @GetMapping("/findByNombreCarrera")
+    public ResponseEntity<List<Persona>> findByNombreCarrera(@RequestParam String nombreCarrera) {
+        List<Persona> alumnos = ((AlumnoDAO) alumnoDao).buscarPorNombreCarrera(nombreCarrera);
+        return new ResponseEntity<>(alumnos, HttpStatus.OK);
+    }
 
     /**
      * EndPoint para registrar un alumno.
@@ -91,9 +96,9 @@ public class AlumnoController {
      * @return response entity con el alumno registrado.
      * @author Manuel Rojas 12-16-2021
      */
-    @PutMapping("{/id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Persona> update(@PathVariable Integer id, @Valid @RequestBody Alumno alumno) {
-        Persona response = ((AlumnoDAO) alumnoDao).actualizarAlumno(id, alumno);
+        Persona response = ((AlumnoDAO) alumnoDao).actualizar(id, alumno);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 

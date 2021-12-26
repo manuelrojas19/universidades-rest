@@ -1,7 +1,6 @@
 package com.ibm.academia.apirest.controllers;
 
 import com.ibm.academia.apirest.entities.Persona;
-import com.ibm.academia.apirest.exceptions.NotFoundException;
 import com.ibm.academia.apirest.services.PersonaDAO;
 import com.ibm.academia.apirest.services.ProfesorDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +29,8 @@ public class ProfesorController {
      */
     @GetMapping("/profesores")
     public ResponseEntity<List<Persona>> findAll() {
-        List<Persona> profe = profesorDao.buscarTodos();
-        return new ResponseEntity<>(alumnos, HttpStatus.OK);
+        List<Persona> profesores = profesorDao.buscarTodos();
+        return new ResponseEntity<>(profesores, HttpStatus.OK);
     }
 
 
@@ -56,8 +55,7 @@ public class ProfesorController {
      */
     @GetMapping("/carreras/{carrera}/profesores")
     public ResponseEntity<List<Persona>> findByCarrera(@PathVariable String carrera) {
-        List<Persona> profesores = (List<Persona>)
-                ((ProfesorDAO) profesorDao).buscarProfesorPorCarrera(carrera);
+        List<Persona> profesores = ((ProfesorDAO) profesorDao).buscarProfesorPorCarrera(carrera);
         return new ResponseEntity<>(profesores, HttpStatus.OK);
     }
 

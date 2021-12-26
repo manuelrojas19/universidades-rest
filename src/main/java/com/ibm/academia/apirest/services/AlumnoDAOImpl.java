@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.ibm.academia.apirest.entities.Persona;
 import com.ibm.academia.apirest.repositories.AlumnoRepository;
 import com.ibm.academia.apirest.repositories.PersonaRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -23,7 +24,8 @@ public class AlumnoDAOImpl extends PersonaDAOImpl implements AlumnoDAO {
     }
 
     @Override
-    public List<Persona> buscarAlumnoPorNombreCarrera(String nombre) {
+    @Transactional(readOnly = true)
+    public List<Persona> buscarPorNombreCarrera(String nombre) {
         List<Persona> personas = (List<Persona>) ((AlumnoRepository) repository).buscarAlumnoPorNombreCarrera(nombre);
         if (personas.isEmpty()) {
             throw new NotFoundException("No se encontraron alumnos");
@@ -32,6 +34,7 @@ public class AlumnoDAOImpl extends PersonaDAOImpl implements AlumnoDAO {
     }
 
     @Override
+    @Transactional
     public Persona guardar(Integer idCarrera, Persona persona) {
         Alumno alumno = (Alumno) persona;
         alumno.setCarrera(carreraDAO.buscarPorId(idCarrera));
@@ -39,7 +42,8 @@ public class AlumnoDAOImpl extends PersonaDAOImpl implements AlumnoDAO {
     }
 
     @Override
-    public Persona actualizarAlumno(Integer id, Persona persona) {
+    @Transactional
+    public Persona actualizar(Integer id, Persona persona) {
         Alumno alumnoToUpate = (Alumno) this.buscarPorId(id);
         Alumno alumno = (Alumno) persona;
 

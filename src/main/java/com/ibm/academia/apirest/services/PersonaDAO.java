@@ -6,8 +6,6 @@ import com.ibm.academia.apirest.entities.Persona;
 
 public interface PersonaDAO extends GenericDAO<Persona> {
     Optional<Persona> buscarPorNombreYApellido(String nombre, String apellido);
-
     Persona buscarPorDni(String dni);
-
-    Iterable<Persona> buscarPersonaPorApellido(String apellido);
+    Iterable<Persona> buscarPorApellido(String apellido);
 }

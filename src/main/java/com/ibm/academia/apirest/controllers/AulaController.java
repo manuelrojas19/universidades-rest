@@ -2,24 +2,22 @@ package com.ibm.academia.apirest.controllers;
 
 import com.ibm.academia.apirest.entities.Aula;
 import com.ibm.academia.apirest.enums.Pizarron;
-import com.ibm.academia.apirest.exceptions.NotFoundException;
 import com.ibm.academia.apirest.services.AulaDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/aulas")
 public class AulaController {
-
     @Autowired
     private AulaDAO aulaDAO;
 
     /**
-     * /**
      * EndPoint que retorna una lista de todas las aulas registradas
      *
      * @return response entity con la lista de todos las aulas registradas
@@ -27,10 +25,7 @@ public class AulaController {
      */
     @GetMapping
     public ResponseEntity<List<Aula>> findAll() {
-        List<Aula> aulas = (List<Aula>) aulaDAO.buscarTodos();
-        if (aulas.isEmpty()) {
-            throw new NotFoundException("No se encontraron alumnos");
-        }
+        List<Aula> aulas = aulaDAO.buscarTodos();
         return new ResponseEntity<>(aulas, HttpStatus.OK);
     }
 
@@ -50,17 +45,13 @@ public class AulaController {
 
     @GetMapping("/findByPizzaron")
     public ResponseEntity<List<Aula>> findByPizzaron(@RequestParam Pizarron pizarron) {
-        List<Aula> aulas = (List<Aula>) aulaDAO.findAulaByPizarron(pizarron);
-        if (aulas.isEmpty())
-            throw new NotFoundException("No hay aulas registradas");
+        List<Aula> aulas = aulaDAO.findByPizarron(pizarron);
         return new ResponseEntity<>(aulas, HttpStatus.OK);
     }
 
     @GetMapping("/findByNombrePabellon")
     public ResponseEntity<List<Aula>> findByNombrePabellon(@RequestParam String nombrePabellon) {
-        List<Aula> aulas = (List<Aula>) aulaDAO.findAulaByNombrePabellon(nombrePabellon);
-        if (aulas.isEmpty())
-            throw new NotFoundException("No hay aulas registradas");
+        List<Aula> aulas = aulaDAO.findByNombrePabellon(nombrePabellon);
         return new ResponseEntity<>(aulas, HttpStatus.OK);
     }
 
@@ -68,5 +59,22 @@ public class AulaController {
     public ResponseEntity<Aula> findByNumeroAula(@RequestParam Integer numeroAula) {
         Aula aula = aulaDAO.findByNumeroAula(numeroAula);
         return new ResponseEntity<>(aula, HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<Aula> save(@Valid @RequestBody Aula aula) {
+        Aula aulaSaved = aulaDAO.guardar(aula);
+        return new ResponseEntity<>(aulaSaved, HttpStatus.CREATED);
+    }
+
+//    @PutMapping("/{id}")
+//    public ResponseEntity<Aula> update(@PathVariable Integer id, @Valid @RequestBody Aula aula) {
+//        Aula aulaUpdated = ((AulaDAO) aulaDAO)
+//    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable Integer id) {
+        aulaDAO.eliminarPorId(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

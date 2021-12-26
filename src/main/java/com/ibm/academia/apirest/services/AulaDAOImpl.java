@@ -7,6 +7,8 @@ import com.ibm.academia.apirest.repositories.AulaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AulaDAOImpl  extends GenericDAOImpl<Aula, AulaRepository> implements AulaDAO {
 
@@ -16,13 +18,13 @@ public class AulaDAOImpl  extends GenericDAOImpl<Aula, AulaRepository> implement
     }
 
     @Override
-    public Iterable<Aula> findAulaByPizarron(Pizarron pizarron) {
-        return repository.findAulaByPizarron(pizarron);
+    public List<Aula> findByPizarron(Pizarron pizarron) {
+        return (List<Aula>) repository.findAulaByPizarron(pizarron);
     }
 
     @Override
-    public Iterable<Aula> findAulaByNombrePabellon(String pabellon) {
-        return repository.findAulaByPabellon_Nombre(pabellon);
+    public List<Aula> findByNombrePabellon(String pabellon) {
+        return (List<Aula>) repository.findAulaByPabellon_Nombre(pabellon);
     }
 
     @Override

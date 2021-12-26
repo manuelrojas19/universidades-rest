@@ -3,9 +3,11 @@ package com.ibm.academia.apirest.services;
 import com.ibm.academia.apirest.entities.Aula;
 import com.ibm.academia.apirest.enums.Pizarron;
 
+import java.util.List;
+
 public interface AulaDAO extends GenericDAO<Aula> {
-    Iterable<Aula> findAulaByPizarron(Pizarron pizarron);
-    Iterable<Aula> findAulaByNombrePabellon(String pabellon);
+    List<Aula> findByPizarron(Pizarron pizarron);
+    List<Aula> findByNombrePabellon(String pabellon);
     Aula findByNumeroAula(Integer numAula);
 
 }

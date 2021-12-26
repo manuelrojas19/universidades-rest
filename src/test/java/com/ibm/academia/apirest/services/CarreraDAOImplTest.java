@@ -38,7 +38,7 @@ class CarreraDAOImplTest
                 .thenReturn(Arrays.asList(DatosDummy.carrera01(), DatosDummy.carrera03()));
 
         //When
-        List<Carrera> expected = (List<Carrera>) carreraDAO.findCarrerasByNombreContains(nombre);
+        List<Carrera> expected = (List<Carrera>) carreraDAO.findByNombreContains(nombre);
 
         //Then
         assertThat(expected.get(0)).isEqualTo(DatosDummy.carrera01());
@@ -57,7 +57,7 @@ class CarreraDAOImplTest
                 .thenReturn(Arrays.asList(DatosDummy.carrera01(), DatosDummy.carrera03()));
 
         //When
-        List<Carrera> expected = (List<Carrera>) carreraDAO.findCarrerasByNombreContainsIgnoreCase(nombre);
+        List<Carrera> expected = (List<Carrera>) carreraDAO.findByNombreContainsIgnoreCase(nombre);
 
         //Then
         assertThat(expected.get(0)).isEqualTo(DatosDummy.carrera01());
@@ -76,7 +76,7 @@ class CarreraDAOImplTest
                 .thenReturn(Arrays.asList(DatosDummy.carrera01(), DatosDummy.carrera03()));
 
         //When
-        List<Carrera> expected = (List<Carrera>) carreraDAO.findCarrerasByCantidadAniosAfter(cantidad);
+        List<Carrera> expected = (List<Carrera>) carreraDAO.findByCantidadAniosAfter(cantidad);
 
         //Then
         assertThat(expected.get(0)).isEqualTo(DatosDummy.carrera01());

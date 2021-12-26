@@ -27,11 +27,17 @@ public class CarreraController {
      */
     @GetMapping
     public ResponseEntity<List<CarreraDto>> findAll() {
-        List<CarreraDto> carreras = ((List<Carrera>) carreraDAO.buscarTodos())
+        List<CarreraDto> carreras = carreraDAO.buscarTodos()
                 .stream().map(CarreraMapper::CarreraToCarreraDto).collect(Collectors.toList());
         return new ResponseEntity<>(carreras, HttpStatus.OK);
     }
 
+    /**
+     * Endpoint para recuperar una carrera por ID.
+     *
+     * @param id de la carrera a recuperar.
+     * @return ResponseEntity con la carrera encontrada.
+     */
     @GetMapping("/{id}")
     public ResponseEntity<CarreraDto> findById(@PathVariable Integer id) {
         Carrera carrera = carreraDAO.buscarPorId(id);
@@ -39,11 +45,42 @@ public class CarreraController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    @GetMapping("/findByCantidadAniosAfter")
+    public ResponseEntity<List<CarreraDto>> findByCantidadAniosAfter(@RequestParam Integer anios) {
+        List<CarreraDto> carreras = carreraDAO
+                .findByCantidadAniosAfter(anios)
+                .stream().map(CarreraMapper::CarreraToCarreraDto).collect(Collectors.toList());
+        return new ResponseEntity<>(carreras, HttpStatus.OK);
+    }
+
+    @GetMapping("/findByNombreContains")
+    public ResponseEntity<List<CarreraDto>> findByNombreContains(@RequestParam String nombre) {
+        List<CarreraDto> carreras = carreraDAO
+                .findByNombreContains(nombre)
+                .stream().map(CarreraMapper::CarreraToCarreraDto).collect(Collectors.toList());
+        return new ResponseEntity<>(carreras, HttpStatus.OK);
+    }
+
+    @GetMapping("/findByNombreContainsIgnoreCase")
+    public ResponseEntity<List<CarreraDto>> findByNombreContainsIgnoreCase(@RequestParam String nombre) {
+        List<CarreraDto> carreras = carreraDAO
+                .findByNombreContainsIgnoreCase(nombre)
+                .stream().map(CarreraMapper::CarreraToCarreraDto).collect(Collectors.toList());
+        return new ResponseEntity<>(carreras, HttpStatus.OK);
+    }
+    
+    /**
+     * Endpoint para recuperar una list de carreras asociadas a un profesor tomando su nombre y apellido
+     *
+     * @param nombre   String con el nombre del profesor
+     * @param apellido String con el apellido del profesor
+     * @return ResponseEntity con las carreras encontradas
+     */
     @GetMapping("/findByProfesorNombreYApellido")
     public ResponseEntity<List<CarreraDto>> findCarrerasByProfesorNombreYApellido(@RequestParam String nombre,
                                                                                   @RequestParam String apellido) {
-        List<CarreraDto> carreras = ((List<Carrera>) carreraDAO
-                .findCarrerasByProfesorNombreYApellido(nombre, apellido))
+        List<CarreraDto> carreras = carreraDAO
+                .findByProfesorNombreYApellido(nombre, apellido)
                 .stream().map(CarreraMapper::CarreraToCarreraDto).collect(Collectors.toList());
         return new ResponseEntity<>(carreras, HttpStatus.OK);
     }
@@ -57,7 +94,7 @@ public class CarreraController {
 
     @PutMapping("/{id}")
     public ResponseEntity<CarreraDto> update(@PathVariable Integer id, @RequestBody Carrera carrera) {
-        Carrera carreraUpdated = carreraDAO.updateCarreraById(id, carrera);
+        Carrera carreraUpdated = carreraDAO.update(id, carrera);
         CarreraDto response = CarreraMapper.CarreraToCarreraDto(carreraUpdated);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }

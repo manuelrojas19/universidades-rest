@@ -24,7 +24,7 @@ public class EmpleadoDAOImpl extends PersonaDAOImpl implements EmpleadoDAO {
     }
 
     @Override
-    public List<Persona> findEmpleadoByTipoEmpleado(TipoEmpleado tipoEmpleado) {
+    public List<Persona> findByTipoEmpleado(TipoEmpleado tipoEmpleado) {
         List<Persona> empleados = (List<Persona>) ((EmpleadoRepository) repository)
                 .findEmpleadoByTipoEmpleado(tipoEmpleado);
         if (empleados.isEmpty())
