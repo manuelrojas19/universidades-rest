@@ -15,7 +15,6 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Objects;
 
-
 @Slf4j
 @RestController
 @RequestMapping("/api/v1/alumnos")
@@ -74,7 +73,8 @@ public class AlumnoController {
      */
     @PostMapping
     public ResponseEntity<Persona> save(@Valid @RequestBody Alumno alumno,
-                                              @RequestParam(required = false) Integer idCarrera) {
+                                        @RequestParam(required = false) Integer idCarrera) {
+        log.info("Received data --> {}, carrera --> {}", alumno, idCarrera);
         Persona personaSaved;
         if (Objects.nonNull(idCarrera))
             personaSaved = ((AlumnoDAO) alumnoDao).guardar(idCarrera, alumno);
@@ -92,7 +92,7 @@ public class AlumnoController {
      * @author Manuel Rojas 12-16-2021
      */
     @PutMapping("{/id}")
-    public ResponseEntity<Persona> upate(@PathVariable Integer id, @Valid @RequestBody Alumno alumno) {
+    public ResponseEntity<Persona> update(@PathVariable Integer id, @Valid @RequestBody Alumno alumno) {
         Persona response = ((AlumnoDAO) alumnoDao).actualizarAlumno(id, alumno);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
