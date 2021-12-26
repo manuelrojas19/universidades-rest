@@ -1,33 +1,19 @@
 package com.ibm.academia.apirest.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 import java.util.Set;
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.PrePersist;
-import javax.persistence.PreUpdate;
-import javax.persistence.Table;
-
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
 @Setter
 @Getter
 @NoArgsConstructor
-@ToString
 @Entity
 //@Table(name = "pabellones", schema = "universidad")
 @Table(name = "pabellones")
@@ -57,6 +43,7 @@ public class Pabellon implements Serializable
 	private Direccion direccion;
 	
 	@OneToMany(mappedBy = "pabellon", fetch = FetchType.LAZY)
+	@JsonIgnore
 	private Set<Aula> aulas;
 	
 	public Pabellon(Integer id, Double metrosCuadrados, String nombre, Direccion direccion) 
@@ -99,4 +86,15 @@ public class Pabellon implements Serializable
 	}
 
 	private static final long serialVersionUID = 6453675000837381309L;
+
+	@Override
+	public String toString() {
+		return getClass().getSimpleName() + "(" +
+				"id = " + id + ", " +
+				"metrosCuadrados = " + metrosCuadrados + ", " +
+				"nombre = " + nombre + ", " +
+				"fechaAlta = " + fechaAlta + ", " +
+				"fechaModificacion = " + fechaModificacion + ", " +
+				"direccion = " + direccion + ")";
+	}
 }

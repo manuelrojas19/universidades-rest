@@ -22,10 +22,10 @@ public class SpringFoxSwagger {
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.ibm.academia.apirest.controllers"))
                 .paths(PathSelectors.any())
-                .build().apiInfo(apiInfo());
+                .build().apiInfo(getApiInfo());
     }
     
-    private ApiInfo apiInfo() {
+    private ApiInfo getApiInfo() {
         return new ApiInfo(
                 "Universidad-Api",
                 "Api de Univerdad",

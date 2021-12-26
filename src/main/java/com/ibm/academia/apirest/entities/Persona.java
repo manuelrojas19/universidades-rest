@@ -58,7 +58,7 @@ public abstract class Persona implements Serializable
 		@AttributeOverride(name = "departamento", column = @Column(name = "departamento"))
 	})
 	private Direccion direccion;
-	
+
 	public Persona(Integer id, String nombre, String apellido, String dni, Direccion direccion) 
 	{
 		this.id = id;

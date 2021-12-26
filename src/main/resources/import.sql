@@ -26,3 +26,19 @@ INSERT INTO profesor_carrera (profesor_id, carrera_id) VALUES (5, 1)
 INSERT INTO profesor_carrera (profesor_id, carrera_id) VALUES (5, 2)
 INSERT INTO profesor_carrera (profesor_id, carrera_id) VALUES (6, 2)
 INSERT INTO profesor_carrera (profesor_id, carrera_id) VALUES (6, 3)
+
+INSERT INTO pabellones (id, nombre, calle, numero, departamento, piso, localidad, codigo_postal, metros_cuadrados, fecha_alta, fecha_modificacion) VALUES (1, 'Computacion', 'Sur 161', '11', '12', '2', 'Iztacalco', '08000', 100, CURRENT_DATE, CURRENT_DATE );
+INSERT INTO pabellones (id, nombre, calle, numero, departamento, piso, localidad, codigo_postal, metros_cuadrados, fecha_alta, fecha_modificacion) VALUES (2, 'Diseño', 'Sur 161', '11', '12', '1', 'Iztacalco', '08000', 100, CURRENT_DATE, CURRENT_DATE );
+INSERT INTO pabellones (id, nombre, calle, numero, departamento, piso, localidad, codigo_postal, metros_cuadrados, fecha_alta, fecha_modificacion) VALUES (3, 'Redes', 'Sur 161', '11', '12', '3', 'Iztacalco', '08000', 100, CURRENT_DATE, CURRENT_DATE );
+
+INSERT INTO empleados (persona_id, sueldo, tipo_empleado, pabellon_id) VALUES (7, 15000, 'ADMINISTRATIVO', 1);
+INSERT INTO empleados (persona_id, sueldo, tipo_empleado, pabellon_id) VALUES (8, 10000, 'MANTENIMIENTO', 2);
+INSERT INTO empleados (persona_id, sueldo, tipo_empleado, pabellon_id) VALUES (9, 15000, 'ADMINISTRATIVO', 3);
+
+INSERT INTO aulas (id, numero_aula, tipo_pizarron, cantidad_pupitres, medidas, pabellon_id, fecha_alta, fecha_modificacion) VALUES (1, 11, 'PIZARRA_BLANCA', 30, '30m x 40m', 1, CURRENT_DATE , CURRENT_DATE );
+INSERT INTO aulas (id, numero_aula, tipo_pizarron, cantidad_pupitres, medidas, pabellon_id, fecha_alta, fecha_modificacion) VALUES (2, 12, 'PIZARRA_TIZA', 30, '30m x 40m', 1, CURRENT_DATE , CURRENT_DATE );
+INSERT INTO aulas (id, numero_aula, tipo_pizarron, cantidad_pupitres, medidas, pabellon_id, fecha_alta, fecha_modificacion) VALUES (3, 13, 'PIZARRA_BLANCA', 30, '30m x 40m', 1, CURRENT_DATE , CURRENT_DATE );
+INSERT INTO aulas (id, numero_aula, tipo_pizarron, cantidad_pupitres, medidas, pabellon_id, fecha_alta, fecha_modificacion) VALUES (4, 14, 'PIZARRA_TIZA', 30, '30m x 40m', 2, CURRENT_DATE , CURRENT_DATE );
+INSERT INTO aulas (id, numero_aula, tipo_pizarron, cantidad_pupitres, medidas, pabellon_id, fecha_alta, fecha_modificacion) VALUES (5, 15, 'PIZARRA_BLANCA', 30, '30m x 40m', 2, CURRENT_DATE , CURRENT_DATE );
+INSERT INTO aulas (id, numero_aula, tipo_pizarron, cantidad_pupitres, medidas, pabellon_id, fecha_alta, fecha_modificacion) VALUES (6, 16, 'PIZARRA_BLANCA', 30, '30m x 40m', 3, CURRENT_DATE , CURRENT_DATE );
+INSERT INTO aulas (id, numero_aula, tipo_pizarron, cantidad_pupitres, medidas, pabellon_id, fecha_alta, fecha_modificacion) VALUES (7, 17, 'PIZARRA_TIZA', 30, '30m x 40m', 3, CURRENT_DATE , CURRENT_DATE );
