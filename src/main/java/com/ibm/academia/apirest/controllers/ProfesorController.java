@@ -67,8 +67,8 @@ public class ProfesorController {
      * @param carrera carrera de los profesores a buscar.
      * @return lista de los profesores asociados a la carrera.
      */
-    @GetMapping("/carreras/{carrera}/profesores")
-    public ResponseEntity<List<Persona>> findByCarrera(@PathVariable String carrera) {
+    @GetMapping("/profesores/findByCarrera")
+    public ResponseEntity<List<Persona>> findByCarrera(@RequestParam String carrera) {
         List<Persona> profesores = ((ProfesorDAO) profesorDao).buscarProfesorPorCarrera(carrera);
         return new ResponseEntity<>(profesores, HttpStatus.OK);
     }
