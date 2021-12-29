@@ -54,10 +54,54 @@ public class DatosDummy {
     public static Aula aula01() {
         return new Aula(null, 11, "12 m x 12 m", 12, Pizarron.PIZARRA_BLANCA);
     }
+
     public static Aula aula02() {
         return new Aula(null, 12, "12 m x 12 m", 12, Pizarron.PIZARRA_TIZA);
     }
+
     public static Aula aula03() {
         return new Aula(null, 13, "12 m x 12 m", 12, Pizarron.PIZARRA_BLANCA);
+    }
+
+    public static Pabellon pabellon01() {
+        return Pabellon.builder()
+                .direccion(Direccion.builder()
+                        .calle("Pipila 402")
+                        .codigoPostal("96980")
+                        .localidad("Alamos")
+                        .numero("12")
+                        .departamento("12")
+                        .build())
+                .nombre("Ciencias")
+                .metrosCuadrados(12.0)
+                .build();
+    }
+
+    public static Pabellon pabellon02() {
+        return Pabellon.builder()
+                .direccion(Direccion.builder()
+                        .calle("Pipila 402")
+                        .codigoPostal("96980")
+                        .localidad("Monterrey")
+                        .numero("12")
+                        .departamento("12")
+                        .build())
+                .nombre("Artes")
+                .metrosCuadrados(12.0)
+                .build();
+    }
+
+    public static Pabellon pabellon03() {
+        return Pabellon.builder()
+                .direccion(Direccion.builder()
+                        .calle("Pipila 402")
+                        .codigoPostal("96980")
+                        .localidad("Santa Fe")
+                        .numero("12")
+                        .departamento("12")
+                        .build())
+                .nombre("Derecho")
+                .metrosCuadrados(12.0)
+                .build();
     }
 }

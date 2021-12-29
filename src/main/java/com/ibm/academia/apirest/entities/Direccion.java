@@ -4,11 +4,7 @@ import java.io.Serializable;
 
 import javax.persistence.Embeddable;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 @Setter
 @Getter
@@ -16,6 +12,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 @Embeddable
+@Builder
 public class Direccion implements Serializable 
 {
 	private String calle;

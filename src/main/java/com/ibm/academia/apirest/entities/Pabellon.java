@@ -1,9 +1,7 @@
 package com.ibm.academia.apirest.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,9 +12,11 @@ import java.util.Set;
 @Setter
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 //@Table(name = "pabellones", schema = "universidad")
 @Table(name = "pabellones")
+@Builder
 public class Pabellon implements Serializable
 {
 	@Id
