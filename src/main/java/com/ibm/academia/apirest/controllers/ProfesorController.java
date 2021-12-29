@@ -14,7 +14,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/profesores")
 public class ProfesorController {
 
     @Autowired
@@ -28,7 +28,7 @@ public class ProfesorController {
      * @return response entity con la lista de todos los profesores registrados
      * @author Manuel Rojas 12-16-2021
      */
-    @GetMapping("/profesores")
+    @GetMapping
     public ResponseEntity<List<Persona>> findAll() {
         List<Persona> profesores = profesorDao.buscarTodos();
         return new ResponseEntity<>(profesores, HttpStatus.OK);
@@ -41,7 +41,7 @@ public class ProfesorController {
      * @return response entity con el profesor encontrado
      * @author Manuel Rojas 12-16-2021
      */
-    @GetMapping("/profesores/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Persona> findByDni(@PathVariable Integer id) {
         Persona alumno = profesorDao.buscarPorId(id);
         return new ResponseEntity<>(alumno, HttpStatus.OK);
@@ -55,7 +55,7 @@ public class ProfesorController {
      * @return response entity con el profesor encontrado
      * @author Manuel Rojas 12-16-2021
      */
-    @GetMapping("/profesores/findByDni")
+    @GetMapping("/findByDni")
     public ResponseEntity<Persona> findByDni(@RequestParam String dni) {
         Persona alumno = profesorDao.buscarPorDni(dni);
         return new ResponseEntity<>(alumno, HttpStatus.OK);
@@ -67,7 +67,7 @@ public class ProfesorController {
      * @param carrera carrera de los profesores a buscar.
      * @return lista de los profesores asociados a la carrera.
      */
-    @GetMapping("/profesores/findByCarrera")
+    @GetMapping("/findByCarrera")
     public ResponseEntity<List<Persona>> findByCarrera(@RequestParam String carrera) {
         List<Persona> profesores = ((ProfesorDAO) profesorDao).buscarProfesorPorCarrera(carrera);
         return new ResponseEntity<>(profesores, HttpStatus.OK);
@@ -80,7 +80,7 @@ public class ProfesorController {
      * @return response entity con el profesor registrado.
      * @author Manuel Rojas 12-16-2021
      */
-    @PostMapping("/profesores")
+    @PostMapping
     public ResponseEntity<Persona> save(@Valid @RequestBody Profesor profesor) {
         Persona response = profesorDao.guardar(profesor);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
@@ -93,10 +93,10 @@ public class ProfesorController {
      * @return response entity con el profesor actualizado.
      * @author Manuel Rojas 12-16-2021
      */
-    @PutMapping("/profesores/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Persona> update(@PathVariable Integer id, @Valid @RequestBody Profesor profesor) {
         Persona response = ((ProfesorDAO) profesorDao).actualizar(id, profesor);
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     /**
@@ -106,9 +106,9 @@ public class ProfesorController {
      * @return response entity con el profesor registrado.
      * @author Manuel Rojas 12-16-2021
      */
-    @DeleteMapping("{/profesores/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Integer id) {
         profesorDao.eliminarPorId(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

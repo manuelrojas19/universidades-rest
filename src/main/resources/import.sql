@@ -28,7 +28,7 @@ INSERT INTO profesor_carrera (profesor_id, carrera_id) VALUES (6, 2)
 INSERT INTO profesor_carrera (profesor_id, carrera_id) VALUES (6, 3)
 
 INSERT INTO pabellones (id, nombre, calle, numero, departamento, piso, localidad, codigo_postal, metros_cuadrados, fecha_alta, fecha_modificacion) VALUES (1, 'Computacion', 'Sur 161', '11', '12', '2', 'Iztacalco', '08000', 100, CURRENT_DATE, CURRENT_DATE );
-INSERT INTO pabellones (id, nombre, calle, numero, departamento, piso, localidad, codigo_postal, metros_cuadrados, fecha_alta, fecha_modificacion) VALUES (2, 'Diseño', 'Sur 161', '11', '12', '1', 'Iztacalco', '08000', 100, CURRENT_DATE, CURRENT_DATE );
+INSERT INTO pabellones (id, nombre, calle, numero, departamento, piso, localidad, codigo_postal, metros_cuadrados, fecha_alta, fecha_modificacion) VALUES (2, 'Diseño', 'Sur 161', '11', '12', '1', 'Benito Juarez', '08000', 100, CURRENT_DATE, CURRENT_DATE );
 INSERT INTO pabellones (id, nombre, calle, numero, departamento, piso, localidad, codigo_postal, metros_cuadrados, fecha_alta, fecha_modificacion) VALUES (3, 'Redes', 'Sur 161', '11', '12', '3', 'Iztacalco', '08000', 100, CURRENT_DATE, CURRENT_DATE );
 
 INSERT INTO empleados (persona_id, sueldo, tipo_empleado, pabellon_id) VALUES (7, 15000, 'ADMINISTRATIVO', 1);

@@ -26,7 +26,7 @@ public class Empleado extends Persona
 	@Enumerated(EnumType.STRING)
 	private TipoEmpleado tipoEmpleado;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "pabellon_id", foreignKey = @ForeignKey(name = "FK_PABELLON_ID"))
 	private Pabellon pabellon;
 	

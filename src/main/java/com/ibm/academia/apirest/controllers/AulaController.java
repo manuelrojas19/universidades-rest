@@ -107,7 +107,7 @@ public class AulaController {
     @PutMapping("/{id}")
     public ResponseEntity<Aula> update(@PathVariable Integer id, @Valid @RequestBody Aula aula) {
         Aula aulaUpdated = aulaDAO.actualizar(id, aula);
-        return new ResponseEntity<>(aulaUpdated, HttpStatus.CREATED);
+        return new ResponseEntity<>(aulaUpdated, HttpStatus.OK);
     }
 
     /**

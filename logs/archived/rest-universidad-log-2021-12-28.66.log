@@ -1,0 +1,43 @@
+2021-12-28 12:21:35,966 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-28 12:21:35,967 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [SpringApplicationShutdownHook] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-12-28 12:21:35,975 WARN org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler [SpringApplicationShutdownHook] SQL Warning Code: 0, SQLState: 00000
+2021-12-28 12:21:35,975 WARN org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler [SpringApplicationShutdownHook] constraint "fk6b7jscr4yvynh5e1h33b8w1js" of relation "alumnos" does not exist, skipping
+2021-12-28 12:21:35,981 WARN org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler [SpringApplicationShutdownHook] SQL Warning Code: 0, SQLState: 00000
+2021-12-28 12:21:35,981 WARN org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler [SpringApplicationShutdownHook] constraint "fk6elkf383e7tk397yr5eviiph2" of relation "empleados" does not exist, skipping
+2021-12-28 12:21:35,986 WARN org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler [SpringApplicationShutdownHook] SQL Warning Code: 0, SQLState: 00000
+2021-12-28 12:21:35,986 WARN org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler [SpringApplicationShutdownHook] constraint "fkbj63bxb4npp4y5mvuufmwg7p7" of relation "profesores" does not exist, skipping
+2021-12-28 12:21:36,000 WARN org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler [SpringApplicationShutdownHook] SQL Warning Code: 0, SQLState: 00000
+2021-12-28 12:21:36,001 WARN org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler [SpringApplicationShutdownHook] table "personas" does not exist, skipping
+2021-12-28 12:21:36,010 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2021-12-28 12:21:36,020 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2021-12-28 12:21:43,905 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting UniversidadesRestApplication using Java 11.0.8 on manuel with PID 62365 (/home/manuelr/IBM/universidades-rest/target/classes started by manuelr in /home/manuelr/IBM/universidades-rest)
+2021-12-28 12:21:43,918 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-12-28 12:21:43,913 INFO org.hibernate.validator.internal.util.Version [background-preinit] HV000001: Hibernate Validator 6.2.0.Final
+2021-12-28 12:21:44,090 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-12-28 12:21:44,090 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-12-28 12:21:45,394 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-28 12:21:45,493 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 89 ms. Found 6 JPA repository interfaces.
+2021-12-28 12:21:46,172 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-12-28 12:21:46,181 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-12-28 12:21:46,182 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-12-28 12:21:46,183 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.55]
+2021-12-28 12:21:46,264 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-12-28 12:21:46,265 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2169 ms
+2021-12-28 12:21:46,395 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-28 12:21:46,431 INFO org.hibernate.Version [restartedMain] HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-12-28 12:21:46,517 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [restartedMain] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-12-28 12:21:46,594 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2021-12-28 12:21:46,660 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2021-12-28 12:21:46,677 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2021-12-28 12:21:47,433 WARN org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler [restartedMain] SQL Warning Code: 0, SQLState: 00000
+2021-12-28 12:21:47,433 WARN org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler [restartedMain] relation "alumnos" does not exist, skipping
+2021-12-28 12:21:47,434 WARN org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler [restartedMain] SQL Warning Code: 0, SQLState: 00000
+2021-12-28 12:21:47,434 WARN org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler [restartedMain] relation "alumnos" does not exist, skipping
+2021-12-28 12:21:47,435 WARN org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler [restartedMain] SQL Warning Code: 0, SQLState: 00000
+2021-12-28 12:21:47,436 WARN org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler [restartedMain] relation "aulas" does not exist, skipping
+2021-12-28 12:21:47,436 WARN org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler [restartedMain] SQL Warning Code: 0, SQLState: 00000
+2021-12-28 12:21:47,437 WARN org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler [restartedMain] relation "empleados" does not exist, skipping
+2021-12-28 12:21:47,438 WARN org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler [restartedMain] SQL Warning Code: 0, SQLState: 00000
+2021-12-28 12:21:47,438 WARN org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler [restartedMain] relation "empleados" does not exist, skipping
+2021-12-28 12:21:47,439 WARN org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler [restartedMain] SQL Warning Code: 0, SQLState: 00000
+2021-12-28 12:21:47,439 WARN org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler [restartedMain] relation "profesor_carrera" does not exist, skipping

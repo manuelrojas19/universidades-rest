@@ -1,0 +1,38 @@
+2021-12-28 12:21:09,711 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-28 12:21:10,006 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-12-28 12:21:10,200 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-12-28 12:21:10,213 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-12-28 12:21:10,775 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started UniversidadesRestApplication in 6.295 seconds (JVM running for 8.075)
+2021-12-28 12:21:10,963 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-28 12:21:10,964 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [SpringApplicationShutdownHook] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-12-28 12:21:10,971 WARN org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler [SpringApplicationShutdownHook] SQL Warning Code: 0, SQLState: 00000
+2021-12-28 12:21:10,971 WARN org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler [SpringApplicationShutdownHook] constraint "fk6b7jscr4yvynh5e1h33b8w1js" of relation "alumnos" does not exist, skipping
+2021-12-28 12:21:10,976 WARN org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler [SpringApplicationShutdownHook] SQL Warning Code: 0, SQLState: 00000
+2021-12-28 12:21:10,976 WARN org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler [SpringApplicationShutdownHook] constraint "fk6elkf383e7tk397yr5eviiph2" of relation "empleados" does not exist, skipping
+2021-12-28 12:21:10,981 WARN org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler [SpringApplicationShutdownHook] SQL Warning Code: 0, SQLState: 00000
+2021-12-28 12:21:10,981 WARN org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler [SpringApplicationShutdownHook] constraint "fkbj63bxb4npp4y5mvuufmwg7p7" of relation "profesores" does not exist, skipping
+2021-12-28 12:21:10,994 WARN org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler [SpringApplicationShutdownHook] SQL Warning Code: 0, SQLState: 00000
+2021-12-28 12:21:10,994 WARN org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler [SpringApplicationShutdownHook] table "personas" does not exist, skipping
+2021-12-28 12:21:11,004 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2021-12-28 12:21:11,013 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2021-12-28 12:21:18,025 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting UniversidadesRestApplication using Java 11.0.8 on manuel with PID 61952 (/home/manuelr/IBM/universidades-rest/target/classes started by manuelr in /home/manuelr/IBM/universidades-rest)
+2021-12-28 12:21:18,042 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-12-28 12:21:18,067 INFO org.hibernate.validator.internal.util.Version [background-preinit] HV000001: Hibernate Validator 6.2.0.Final
+2021-12-28 12:21:18,139 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-12-28 12:21:18,140 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-12-28 12:21:19,175 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-28 12:21:19,239 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 56 ms. Found 6 JPA repository interfaces.
+2021-12-28 12:21:19,860 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-12-28 12:21:19,869 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-12-28 12:21:19,869 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-12-28 12:21:19,870 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.55]
+2021-12-28 12:21:19,951 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-12-28 12:21:19,952 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1811 ms
+2021-12-28 12:21:20,080 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-28 12:21:20,114 INFO org.hibernate.Version [restartedMain] HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-12-28 12:21:20,199 INFO org.hibernate.annotations.common.reflection.java.JavaReflectionManager [restartedMain] HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-12-28 12:21:20,274 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2021-12-28 12:21:20,343 INFO com.zaxxer.hikari.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2021-12-28 12:21:20,360 INFO org.hibernate.dialect.Dialect [restartedMain] HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2021-12-28 12:21:21,126 WARN org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler [restartedMain] SQL Warning Code: 0, SQLState: 00000
+2021-12-28 12:21:21,127 WARN org.hibernate.engine.jdbc.spi.SqlExceptionHelper$StandardWarningHandler [restartedMain] relation "alumnos" does not exist, skipping

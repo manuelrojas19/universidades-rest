@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -71,6 +72,7 @@ public class AlumnoController {
      */
     @GetMapping("/findByNombreCarrera")
     public ResponseEntity<List<Persona>> findByNombreCarrera(@RequestParam String nombreCarrera) {
+        log.info("Nombre Carrera --> {}", nombreCarrera);
         List<Persona> alumnos = ((AlumnoDAO) alumnoDao).buscarPorNombreCarrera(nombreCarrera);
         return new ResponseEntity<>(alumnos, HttpStatus.OK);
     }
@@ -106,6 +108,7 @@ public class AlumnoController {
      */
     @PutMapping("/{id}")
     public ResponseEntity<Persona> update(@PathVariable Integer id, @Valid @RequestBody Alumno alumno) {
+        log.info("Received data --> {}", alumno);
         Persona response = ((AlumnoDAO) alumnoDao).actualizar(id, alumno);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
@@ -117,7 +120,7 @@ public class AlumnoController {
      * @return response entity con el status del alumno
      * @author Manuel Rojas 12-16-2021
      */
-    @DeleteMapping("{/id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Integer id) {
         alumnoDao.eliminarPorId(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

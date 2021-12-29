@@ -30,7 +30,7 @@ public class PersonaRepositoryTest
 	private PersonaRepository empleadoRepository;
 	
 	@Autowired
-	@Qualifier("profesorRepository")
+	@Qualifier("repositorioProfesores")
 	private PersonaRepository profesorRepository;
 	
 	

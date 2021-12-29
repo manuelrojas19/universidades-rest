@@ -5,6 +5,7 @@ import com.ibm.academia.apirest.exceptions.NotFoundException;
 import com.ibm.academia.apirest.repositories.PabellonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -20,15 +21,17 @@ public class PabellonDAOImpl extends GenericDAOImpl<Pabellon, PabellonRepository
     }
 
     @Override
-    public List<Pabellon> findByDireccion_Localidad(String localidad) {
+    @Transactional(readOnly = true)
+    public List<Pabellon> findByLocalidad(String localidad) {
         List<Pabellon> pabellones = (List<Pabellon>) repository
-                .findPabellonsByDireccion_Localidad(localidad);
+                .findAllByDireccion_Localidad(localidad);
         if (pabellones.isEmpty())
             throw new NotFoundException(NOT_FOUND_ERROR_MSG);
         return pabellones;
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Pabellon> findByNombre(String nombre) {
         List<Pabellon> pabellones = (List<Pabellon>) repository.findPabellonsByNombre(nombre);
         if (pabellones.isEmpty())
@@ -37,10 +40,12 @@ public class PabellonDAOImpl extends GenericDAOImpl<Pabellon, PabellonRepository
     }
 
     @Override
+    @Transactional
     public Pabellon actualizar(Integer id, Pabellon pabellon) {
         Pabellon pabellonToUpdate = this.buscarPorId(id);
         pabellonToUpdate.setNombre(pabellon.getNombre());
         pabellonToUpdate.setMetrosCuadrados(pabellon.getMetrosCuadrados());
+        pabellonToUpdate.setDireccion(pabellon.getDireccion());
         return repository.save(pabellonToUpdate);
     }
 }

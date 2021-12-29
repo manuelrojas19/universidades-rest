@@ -20,7 +20,11 @@ import java.util.Set;
 public class Pabellon implements Serializable
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@SequenceGenerator(name = "pabellon_id_seq",
+			initialValue = 10,
+			allocationSize = 100)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="pabellon_id_seq")
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	@Column(name = "metros_cuadrados")
@@ -42,9 +46,10 @@ public class Pabellon implements Serializable
 	})
 	private Direccion direccion;
 	
-	@OneToMany(mappedBy = "pabellon", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "pabellon", fetch = FetchType.LAZY,  orphanRemoval=true, cascade = CascadeType.ALL)
 	@JsonIgnore
 	private Set<Aula> aulas;
+
 	
 	public Pabellon(Integer id, Double metrosCuadrados, String nombre, Direccion direccion) 
 	{

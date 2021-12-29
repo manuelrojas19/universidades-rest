@@ -24,7 +24,11 @@ import lombok.ToString;
 public class Aula implements Serializable 
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@SequenceGenerator(name = "aula_id_seq",
+			initialValue = 10,
+			allocationSize = 100)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="aula_id_seq")
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	@Column(name = "numero_aula", nullable = false)
@@ -78,18 +82,18 @@ public class Aula implements Serializable
 		Aula other = (Aula) obj;
 		return Objects.equals(id, other.id) && Objects.equals(numeroAula, other.numeroAula);
 	}
-	
+
 	@PrePersist
-	private void antesPersistir()
-	{
+	private void antesPersistir() {
 		this.fechaAlta = new Date();
-	}
-	
-	@PreUpdate
-	private void antesActualizar()
-	{
 		this.fechaModificacion = new Date();
 	}
+
+	@PreUpdate
+	private void antesActualizar() {
+		this.fechaModificacion = new Date();
+	}
+
 
 	private static final long serialVersionUID = -2327342842041992057L;
 }

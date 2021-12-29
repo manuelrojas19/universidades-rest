@@ -88,7 +88,7 @@ public class EmpleadoController {
      * @return response entity con el empleado registrado.
      * @author Manuel Rojas 12-16-2021
      */
-    @PutMapping("{/id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Persona> update(@PathVariable Integer id, @Valid @RequestBody Empleado empleado) {
         Persona response = ((EmpleadoDAO) empleadoDao).actualizar(id, empleado);
         return new ResponseEntity<>(response, HttpStatus.OK);
@@ -101,10 +101,10 @@ public class EmpleadoController {
      * @return response entity con el status de la solicitud
      * @author Manuel Rojas 12-16-2021
      */
-    @DeleteMapping("{/id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Integer id) {
         empleadoDao.eliminarPorId(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
 }

@@ -50,10 +50,11 @@ public class PabellonController {
      * @return response entity con la lista los pabellones encontrados
      * @author Manuel Rojas 12-16-2021
      */
-    @GetMapping("/findByDireccion_Localidad")
-    public ResponseEntity<List<Pabellon>> findByDireccion_Localidad(@RequestParam String localidad) {
+    @GetMapping("/findByLocalidad")
+    public ResponseEntity<List<Pabellon>> findByLocalidad(@RequestParam String localidad) {
+        log.info("Localidad --> {}", localidad);
         List<Pabellon> pabellones = pabellonDAO
-                .findByDireccion_Localidad(localidad);
+                .findByLocalidad(localidad);
         return new ResponseEntity<>(pabellones, HttpStatus.OK);
     }
 
@@ -91,7 +92,7 @@ public class PabellonController {
      * @return response entity con el pabellon registrado.
      * @author Manuel Rojas 12-16-2021
      */
-    @PutMapping("{/id}")
+    @PutMapping("/{id}")
     public ResponseEntity<Pabellon> update(@PathVariable Integer id, @Valid @RequestBody Pabellon pabellon) {
         Pabellon response = pabellonDAO.actualizar(id, pabellon);
         return new ResponseEntity<>(response, HttpStatus.OK);

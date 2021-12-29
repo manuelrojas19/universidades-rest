@@ -18,6 +18,8 @@ public class AlumnoDAOImpl extends PersonaDAOImpl implements AlumnoDAO {
     @Autowired
     private CarreraDAO carreraDAO;
 
+    public static final String NOT_FOUND_ERROR_MSG = "No se encontraron alumnos";
+
     @Autowired
     public AlumnoDAOImpl(@Qualifier("repositorioAlumnos") PersonaRepository repository) {
         super(repository);
@@ -28,7 +30,7 @@ public class AlumnoDAOImpl extends PersonaDAOImpl implements AlumnoDAO {
     public List<Persona> buscarPorNombreCarrera(String nombre) {
         List<Persona> personas = (List<Persona>) ((AlumnoRepository) repository).buscarAlumnoPorNombreCarrera(nombre);
         if (personas.isEmpty()) {
-            throw new NotFoundException("No se encontraron alumnos");
+            throw new NotFoundException(NOT_FOUND_ERROR_MSG);
         }
         return personas;
     }

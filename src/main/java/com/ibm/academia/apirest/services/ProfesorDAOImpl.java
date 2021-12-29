@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class ProfesorDAOImpl extends PersonaDAOImpl implements ProfesorDAO {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Persona> buscarProfesorPorCarrera(String nombreCarrera) {
         List<Persona> profesores = (List<Persona>) ((ProfesorRepository) repository)
                 .findProfesoresByCarrera(nombreCarrera);
@@ -32,10 +34,12 @@ public class ProfesorDAOImpl extends PersonaDAOImpl implements ProfesorDAO {
     }
 
     @Override
+    @Transactional
     public Profesor actualizar(Integer id, Profesor profesor) {
         Profesor profesorToUpdate = (Profesor) this.buscarPorId(id);
         profesorToUpdate.setNombre(profesor.getNombre());
         profesorToUpdate.setApellido(profesor.getApellido());
+        profesorToUpdate.setDireccion(profesor.getDireccion());
         profesorToUpdate.setSueldo(profesor.getSueldo());
         profesorToUpdate.setDni(profesor.getDni());
         return repository.save(profesorToUpdate);

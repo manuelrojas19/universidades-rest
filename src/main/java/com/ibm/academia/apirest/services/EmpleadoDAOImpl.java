@@ -9,13 +9,14 @@ import com.ibm.academia.apirest.repositories.PersonaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service("empleadoDao")
 public class EmpleadoDAOImpl extends PersonaDAOImpl implements EmpleadoDAO {
 
-    private static final String NOT_FOUND_ERROR_MSG = "No se han encontrado empleados";
+    public static final String NOT_FOUND_ERROR_MSG = "No se han encontrado empleados";
 
     @Autowired
     public EmpleadoDAOImpl(@Qualifier("empleadoRepository") PersonaRepository repository) {
@@ -23,6 +24,7 @@ public class EmpleadoDAOImpl extends PersonaDAOImpl implements EmpleadoDAO {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Persona> findByTipoEmpleado(TipoEmpleado tipoEmpleado) {
         List<Persona> empleados = (List<Persona>) ((EmpleadoRepository) repository)
                 .findEmpleadoByTipoEmpleado(tipoEmpleado);
@@ -32,6 +34,7 @@ public class EmpleadoDAOImpl extends PersonaDAOImpl implements EmpleadoDAO {
     }
 
     @Override
+    @Transactional
     public Empleado actualizar(Integer id, Empleado empleado) {
         Empleado empleadoToUpdate = (Empleado) this.buscarPorId(id);
         empleadoToUpdate.setTipoEmpleado(empleado.getTipoEmpleado());
