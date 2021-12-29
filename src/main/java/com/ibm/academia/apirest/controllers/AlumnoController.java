@@ -4,6 +4,10 @@ import com.ibm.academia.apirest.entities.Alumno;
 import com.ibm.academia.apirest.entities.Persona;
 import com.ibm.academia.apirest.services.AlumnoDAO;
 import com.ibm.academia.apirest.services.PersonaDAO;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -31,6 +35,11 @@ public class AlumnoController {
      * @return response entity con la lista de todos los alumnos registrados
      * @author Manuel Rojas 12-16-2021
      */
+    @Operation(summary = "Obtener una lista de los alumnos registrados en la bd.")
+    @ApiResponse(responseCode = "200", description = "Lista con las alumnos registrados.",
+            content = {@Content(mediaType = "application/json",
+                    schema = @Schema(implementation = Alumno.class)
+            )})
     @GetMapping
     public ResponseEntity<List<Persona>> findAll() {
         List<Persona> alumnos = alumnoDao.buscarTodos();
@@ -44,6 +53,11 @@ public class AlumnoController {
      * @return response entity con el alumno encontrado
      * @author Manuel Rojas 12-16-2021
      */
+    @Operation(summary = "Obtener un alumno por id")
+    @ApiResponse(responseCode = "200", description = "Alumno encontrado",
+            content = {@Content(mediaType = "application/json",
+                    schema = @Schema(implementation = Alumno.class)
+            )})
     @GetMapping("/{id}")
     public ResponseEntity<Persona> findById(@PathVariable Integer id) {
         Persona alumno = alumnoDao.buscarPorId(id);
@@ -57,6 +71,11 @@ public class AlumnoController {
      * @return response entity con el alumno encontrado
      * @author Manuel Rojas 12-16-2021
      */
+    @Operation(summary = "Obtener un alumno por dni")
+    @ApiResponse(responseCode = "200", description = "Alumno encontrado",
+            content = {@Content(mediaType = "application/json",
+                    schema = @Schema(implementation = Alumno.class)
+            )})
     @GetMapping("/findByDni")
     public ResponseEntity<Persona> findByDni(@RequestParam String dni) {
         Persona alumno = alumnoDao.buscarPorDni(dni);
@@ -70,6 +89,11 @@ public class AlumnoController {
      * @return Lista de carreras
      * @author Manuel Rojas 12-16-2021
      */
+    @Operation(summary = "Obtener un alumno por el nombre de su carrera asociada")
+    @ApiResponse(responseCode = "200", description = "Alumno encontrado",
+            content = {@Content(mediaType = "application/json",
+                    schema = @Schema(implementation = Alumno.class)
+            )})
     @GetMapping("/findByNombreCarrera")
     public ResponseEntity<List<Persona>> findByNombreCarrera(@RequestParam String nombreCarrera) {
         log.info("Nombre Carrera --> {}", nombreCarrera);
@@ -86,6 +110,11 @@ public class AlumnoController {
      * @return response entity con los datos del alumno registrado.
      * @author Manuel Rojas 12-16-2021
      */
+    @Operation(summary = "Agregar un alumno")
+    @ApiResponse(responseCode = "201", description = "Alumno creado",
+            content = {@Content(mediaType = "application/json",
+                    schema = @Schema(implementation = Alumno.class)
+            )})
     @PostMapping
     public ResponseEntity<Persona> save(@Valid @RequestBody Alumno alumno,
                                         @RequestParam(required = false) Integer idCarrera) {
@@ -106,6 +135,11 @@ public class AlumnoController {
      * @return response entity con el alumno actualizado.
      * @author Manuel Rojas 12-16-2021
      */
+    @Operation(summary = "Actualizar un alumno")
+    @ApiResponse(responseCode = "201", description = "Alumno actualizado",
+            content = {@Content(mediaType = "application/json",
+                    schema = @Schema(implementation = Alumno.class)
+            )})
     @PutMapping("/{id}")
     public ResponseEntity<Persona> update(@PathVariable Integer id, @Valid @RequestBody Alumno alumno) {
         log.info("Received data --> {}", alumno);
@@ -120,6 +154,10 @@ public class AlumnoController {
      * @return response entity con el status del alumno
      * @author Manuel Rojas 12-16-2021
      */
+    @Operation(summary = "Eliminar un alumno")
+    @ApiResponse(responseCode = "204", description = "Status de la solicitud",
+            content = {@Content(mediaType = "application/json"
+            )})
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable Integer id) {
         alumnoDao.eliminarPorId(id);
