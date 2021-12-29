@@ -1,0 +1,33 @@
+2021-12-29 12:16:12,083 WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-29 12:16:12,305 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-12-29 12:16:12,482 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-12-29 12:16:12,491 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-12-29 12:16:12,961 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started UniversidadesRestApplication in 4.936 seconds (JVM running for 5.921)
+2021-12-29 12:17:13,603 INFO org.apache.juli.logging.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-12-29 12:17:13,604 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2021-12-29 12:17:13,606 INFO org.springframework.web.servlet.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 2 ms
+2021-12-29 12:17:14,620 ERROR springfox.documentation.swagger2.mappers.ReferenceModelSpecificationToPropertyConverter [http-nio-8080-exec-1] Unable to find a model that matches key ModelKey{qualifiedModelName=ModelName{namespace='com.ibm.academia.apirest.entities', name='Alumno'}, viewDiscriminator=null, validationGroupDiscriminators=[], isResponse=true}
+2021-12-29 12:17:14,622 ERROR springfox.documentation.swagger2.mappers.ReferenceModelSpecificationToPropertyConverter [http-nio-8080-exec-1] Unable to find a model that matches key ModelKey{qualifiedModelName=ModelName{namespace='com.ibm.academia.apirest.entities', name='Alumno'}, viewDiscriminator=null, validationGroupDiscriminators=[], isResponse=true}
+2021-12-29 12:17:14,624 ERROR springfox.documentation.swagger2.mappers.ReferenceModelSpecificationToPropertyConverter [http-nio-8080-exec-1] Unable to find a model that matches key ModelKey{qualifiedModelName=ModelName{namespace='com.ibm.academia.apirest.entities', name='Alumno'}, viewDiscriminator=null, validationGroupDiscriminators=[], isResponse=true}
+2021-12-29 12:17:14,625 ERROR springfox.documentation.swagger2.mappers.ReferenceModelSpecificationToPropertyConverter [http-nio-8080-exec-1] Unable to find a model that matches key ModelKey{qualifiedModelName=ModelName{namespace='com.ibm.academia.apirest.entities', name='Alumno'}, viewDiscriminator=null, validationGroupDiscriminators=[], isResponse=true}
+2021-12-29 12:17:14,631 ERROR springfox.documentation.swagger2.mappers.ReferenceModelSpecificationToPropertyConverter [http-nio-8080-exec-1] Unable to find a model that matches key ModelKey{qualifiedModelName=ModelName{namespace='com.ibm.academia.apirest.entities', name='Alumno'}, viewDiscriminator=null, validationGroupDiscriminators=[], isResponse=true}
+2021-12-29 12:17:14,635 ERROR springfox.documentation.swagger2.mappers.ReferenceModelSpecificationToPropertyConverter [http-nio-8080-exec-1] Unable to find a model that matches key ModelKey{qualifiedModelName=ModelName{namespace='com.ibm.academia.apirest.entities', name='Alumno'}, viewDiscriminator=null, validationGroupDiscriminators=[], isResponse=true}
+2021-12-29 12:18:20,537 INFO org.springframework.orm.jpa.AbstractEntityManagerFactoryBean [SpringApplicationShutdownHook] Closing JPA EntityManagerFactory for persistence unit 'default'
+2021-12-29 12:18:20,538 INFO org.hibernate.tool.schema.internal.SchemaDropperImpl$DelayedDropActionImpl [SpringApplicationShutdownHook] HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2021-12-29 12:18:20,580 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2021-12-29 12:18:20,589 INFO com.zaxxer.hikari.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
+2021-12-29 12:18:26,856 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting UniversidadesRestApplication using Java 11.0.8 on manuel with PID 178203 (/home/manuelr/IBM/universidades-rest/target/classes started by manuelr in /home/manuelr/IBM/universidades-rest)
+2021-12-29 12:18:26,863 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-12-29 12:18:26,870 INFO org.hibernate.validator.internal.util.Version [background-preinit] HV000001: Hibernate Validator 6.2.0.Final
+2021-12-29 12:18:26,931 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-12-29 12:18:26,932 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-12-29 12:18:27,772 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-29 12:18:27,826 INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 47 ms. Found 6 JPA repository interfaces.
+2021-12-29 12:18:28,321 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-12-29 12:18:28,328 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-12-29 12:18:28,328 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-12-29 12:18:28,328 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.55]
+2021-12-29 12:18:28,393 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-12-29 12:18:28,393 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1461 ms
+2021-12-29 12:18:28,491 INFO org.hibernate.jpa.internal.util.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-29 12:18:28,517 INFO org.hibernate.Version [restartedMain] HHH000412: Hibernate ORM core version 5.4.32.Final

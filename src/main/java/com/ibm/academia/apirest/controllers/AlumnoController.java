@@ -38,7 +38,7 @@ public class AlumnoController {
     @Operation(summary = "Obtener una lista de los alumnos registrados en la bd.")
     @ApiResponse(responseCode = "200", description = "Lista con las alumnos registrados.",
             content = {@Content(mediaType = "application/json",
-                    schema = @Schema(implementation = Alumno.class)
+                    schema = @Schema(implementation = Persona.class)
             )})
     @GetMapping
     public ResponseEntity<List<Persona>> findAll() {
@@ -56,7 +56,7 @@ public class AlumnoController {
     @Operation(summary = "Obtener un alumno por id")
     @ApiResponse(responseCode = "200", description = "Alumno encontrado",
             content = {@Content(mediaType = "application/json",
-                    schema = @Schema(implementation = Alumno.class)
+                    schema = @Schema(implementation = Persona.class)
             )})
     @GetMapping("/{id}")
     public ResponseEntity<Persona> findById(@PathVariable Integer id) {
@@ -74,7 +74,7 @@ public class AlumnoController {
     @Operation(summary = "Obtener un alumno por dni")
     @ApiResponse(responseCode = "200", description = "Alumno encontrado",
             content = {@Content(mediaType = "application/json",
-                    schema = @Schema(implementation = Alumno.class)
+                    schema = @Schema(implementation = Persona.class)
             )})
     @GetMapping("/findByDni")
     public ResponseEntity<Persona> findByDni(@RequestParam String dni) {
@@ -92,7 +92,7 @@ public class AlumnoController {
     @Operation(summary = "Obtener un alumno por el nombre de su carrera asociada")
     @ApiResponse(responseCode = "200", description = "Alumno encontrado",
             content = {@Content(mediaType = "application/json",
-                    schema = @Schema(implementation = Alumno.class)
+                    schema = @Schema(implementation = Persona.class)
             )})
     @GetMapping("/findByNombreCarrera")
     public ResponseEntity<List<Persona>> findByNombreCarrera(@RequestParam String nombreCarrera) {
@@ -113,7 +113,7 @@ public class AlumnoController {
     @Operation(summary = "Agregar un alumno")
     @ApiResponse(responseCode = "201", description = "Alumno creado",
             content = {@Content(mediaType = "application/json",
-                    schema = @Schema(implementation = Alumno.class)
+                    schema = @Schema(implementation = Persona.class)
             )})
     @PostMapping
     public ResponseEntity<Persona> save(@Valid @RequestBody Alumno alumno,
@@ -138,7 +138,7 @@ public class AlumnoController {
     @Operation(summary = "Actualizar un alumno")
     @ApiResponse(responseCode = "201", description = "Alumno actualizado",
             content = {@Content(mediaType = "application/json",
-                    schema = @Schema(implementation = Alumno.class)
+                    schema = @Schema(implementation = Persona.class)
             )})
     @PutMapping("/{id}")
     public ResponseEntity<Persona> update(@PathVariable Integer id, @Valid @RequestBody Alumno alumno) {
